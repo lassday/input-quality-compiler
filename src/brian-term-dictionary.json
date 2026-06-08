@@ -6,23 +6,39 @@
     "schema": {
       "canonical": "the target canonical form returned in normalizedIntent",
       "aliases": "lowercased strings Brian commonly types/dictates that should map to canonical",
-      "contextScope": "optional gate (`null` | '3d' | 'code' | 'ai' | 'media' | 'video') — only fires when context tokens co-occur in the input",
-      "confidence": "0..1 — base confidence when an alias matches exactly. Fuzzy matches subtract distance/maxDist*0.3",
-      "uncertaintyFlag": "if true, the normalization is surfaced with a visible warning even on exact match — for ambiguous brand names (tripa could mean Tripo3D in 3D context but might not be)",
+      "contextScope": "optional gate (`null` | '3d' | 'code' | 'ai' | 'media' | 'video') \u2014 only fires when context tokens co-occur in the input",
+      "confidence": "0..1 \u2014 base confidence when an alias matches exactly. Fuzzy matches subtract distance/maxDist*0.3",
+      "uncertaintyFlag": "if true, the normalization is surfaced with a visible warning even on exact match \u2014 for ambiguous brand names (tripa could mean Tripo3D in 3D context but might not be)",
       "phrase": "if true, the aliases are multi-word phrases matched contiguously (not single-token); used for intent phrases like 'don\\u2019t take things away'"
     }
   },
   "entries": [
     {
       "canonical": "Claude",
-      "aliases": ["claw", "cluade", "claud", "clauded", "cluad", "claude"],
+      "aliases": [
+        "claw",
+        "cluade",
+        "claud",
+        "clauded",
+        "cluad",
+        "claude"
+      ],
       "contextScope": null,
       "confidence": 0.95,
       "uncertaintyFlag": false
     },
     {
       "canonical": "ChatGPT/OpenAI",
-      "aliases": ["chat got", "chatpgt", "chat gpt", "chatgtp", "chatgot", "chatgpt", "open ai", "openai"],
+      "aliases": [
+        "chat got",
+        "chatpgt",
+        "chat gpt",
+        "chatgtp",
+        "chatgot",
+        "chatgpt",
+        "open ai",
+        "openai"
+      ],
       "contextScope": null,
       "confidence": 0.95,
       "uncertaintyFlag": false,
@@ -30,126 +46,179 @@
     },
     {
       "canonical": "Gemini",
-      "aliases": ["gemeni", "gemni", "geminni", "gemini"],
+      "aliases": [
+        "gemeni",
+        "gemni",
+        "geminni",
+        "gemini"
+      ],
       "contextScope": null,
       "confidence": 0.95,
       "uncertaintyFlag": false
     },
     {
       "canonical": "xAI/Grok",
-      "aliases": ["grock", "groc", "grok", "xai", "x ai", "x.ai"],
+      "aliases": [
+        "grock",
+        "groc",
+        "grok",
+        "xai",
+        "x ai",
+        "x.ai"
+      ],
       "contextScope": null,
       "confidence": 0.9,
       "uncertaintyFlag": false
     },
     {
       "canonical": "Cursor",
-      "aliases": ["curser", "cursor", "cursore"],
+      "aliases": [
+        "curser",
+        "cursor",
+        "cursore"
+      ],
       "contextScope": "code",
       "confidence": 0.85,
       "uncertaintyFlag": false
     },
     {
       "canonical": "CLI",
-      "aliases": ["cli", "command line", "comand line", "terminal", "comand"],
+      "aliases": [
+        "cli",
+        "command line",
+        "comand line",
+        "terminal",
+        "comand"
+      ],
       "contextScope": "code",
       "confidence": 0.7,
       "uncertaintyFlag": true
     },
     {
       "canonical": "API",
-      "aliases": ["api", "apis", "endpoint", "endpoints"],
+      "aliases": [
+        "api",
+        "apis",
+        "endpoint",
+        "endpoints"
+      ],
       "contextScope": null,
       "confidence": 0.9,
       "uncertaintyFlag": false
     },
     {
       "canonical": "Tripo3D",
-      "aliases": ["tripa", "triple", "tripo", "tripo3d"],
+      "aliases": [
+        "tripa",
+        "triple",
+        "tripo",
+        "tripo3d"
+      ],
       "contextScope": "3d",
       "confidence": 0.6,
       "uncertaintyFlag": true
     },
     {
       "canonical": "ElevenLabs",
-      "aliases": ["eleven labs", "11labs", "11 labs", "elabs", "elevn labs"],
+      "aliases": [
+        "eleven labs",
+        "11labs",
+        "11 labs",
+        "elabs",
+        "elevn labs"
+      ],
       "contextScope": null,
       "confidence": 0.9,
       "uncertaintyFlag": false
     },
     {
       "canonical": "HeyGen",
-      "aliases": ["hey gen", "heygen", "hey-gen"],
+      "aliases": [
+        "hey gen",
+        "heygen",
+        "hey-gen"
+      ],
       "contextScope": "video",
       "confidence": 0.9,
       "uncertaintyFlag": false
     },
     {
       "canonical": "Runway",
-      "aliases": ["runaway", "run way", "runway"],
+      "aliases": [
+        "runaway",
+        "run way",
+        "runway"
+      ],
       "contextScope": "video",
       "confidence": 0.85,
       "uncertaintyFlag": false
     },
     {
       "canonical": "Drive",
-      "aliases": ["drive", "google drive", "g drive", "gdrive"],
+      "aliases": [
+        "drive",
+        "google drive",
+        "g drive",
+        "gdrive"
+      ],
       "contextScope": null,
       "confidence": 0.85,
       "uncertaintyFlag": false
     },
     {
-      "canonical": "Klariven",
-      "aliases": ["klariven", "klariv", "klaraven", "klarivan", "clariven"],
-      "contextScope": null,
-      "confidence": 0.95,
-      "uncertaintyFlag": false
-    },
-    {
-      "canonical": "Shipwarden",
-      "aliases": ["shipwarden", "ship warden", "shipwarde", "ship warder"],
-      "contextScope": null,
-      "confidence": 0.9,
-      "uncertaintyFlag": false
-    },
-    {
-      "canonical": "Trelmir OS",
-      "aliases": ["trelmir os", "trelmir", "trelmer os", "trelmir-os", "tremlir"],
-      "contextScope": null,
-      "confidence": 0.95,
-      "uncertaintyFlag": false
-    },
-    {
       "canonical": "repo",
-      "aliases": ["reppo", "repo", "reps", "repor"],
+      "aliases": [
+        "reppo",
+        "repo",
+        "reps",
+        "repor"
+      ],
       "contextScope": null,
       "confidence": 0.9,
       "uncertaintyFlag": false
     },
     {
       "canonical": "build",
-      "aliases": ["bill", "bld", "build"],
+      "aliases": [
+        "bill",
+        "bld",
+        "build"
+      ],
       "contextScope": "code",
       "confidence": 0.6,
       "uncertaintyFlag": true
     },
     {
       "canonical": "deploy",
-      "aliases": ["deploi", "deploy", "deploye"],
+      "aliases": [
+        "deploi",
+        "deploy",
+        "deploye"
+      ],
       "contextScope": "code",
       "confidence": 0.85,
       "uncertaintyFlag": false
     },
     {
       "canonical": "commit",
-      "aliases": ["commit", "comit", "commt", "comitt"],
+      "aliases": [
+        "commit",
+        "comit",
+        "commt",
+        "comitt"
+      ],
       "contextScope": "code",
       "confidence": 0.85,
       "uncertaintyFlag": false
     },
     {
       "canonical": "static-to-live",
-      "aliases": ["static but life", "static but live", "static to life", "static to live"],
+      "aliases": [
+        "static but life",
+        "static but live",
+        "static to life",
+        "static to live"
+      ],
       "contextScope": null,
       "confidence": 0.85,
       "uncertaintyFlag": false,
@@ -157,7 +226,12 @@
     },
     {
       "canonical": "muddy-speech-normalization-requirement",
-      "aliases": ["muddied speech", "muddy speech", "muddied input", "muddy input"],
+      "aliases": [
+        "muddied speech",
+        "muddy speech",
+        "muddied input",
+        "muddy input"
+      ],
       "contextScope": null,
       "confidence": 0.9,
       "uncertaintyFlag": false,
@@ -165,7 +239,13 @@
     },
     {
       "canonical": "anti-dilution-requirement",
-      "aliases": ["don't take things away", "dont take things away", "no watering down", "do not water down", "preserve scope"],
+      "aliases": [
+        "don't take things away",
+        "dont take things away",
+        "no watering down",
+        "do not water down",
+        "preserve scope"
+      ],
       "contextScope": null,
       "confidence": 0.95,
       "uncertaintyFlag": false,
@@ -173,23 +253,24 @@
     },
     {
       "canonical": "input-quality-gate-requirement",
-      "aliases": ["quality in quality out", "quality in/quality out", "quality-in quality-out"],
+      "aliases": [
+        "quality in quality out",
+        "quality in/quality out",
+        "quality-in quality-out"
+      ],
       "contextScope": null,
       "confidence": 0.95,
       "uncertaintyFlag": false,
       "phrase": true
     },
     {
-      "canonical": "founder-voice-launch-gate",
-      "aliases": ["founder voice", "my voice", "brian voice"],
-      "contextScope": "media",
-      "confidence": 0.85,
-      "uncertaintyFlag": false,
-      "phrase": true
-    },
-    {
       "canonical": "live-runtime-behavior-requirement",
-      "aliases": ["live runtime", "real runtime", "actual runtime", "running runtime"],
+      "aliases": [
+        "live runtime",
+        "real runtime",
+        "actual runtime",
+        "running runtime"
+      ],
       "contextScope": null,
       "confidence": 0.85,
       "uncertaintyFlag": false,
@@ -197,10 +278,63 @@
     }
   ],
   "contextTokens": {
-    "3d": ["3d", "mesh", "model", "geometry", "tripo", "meshy", "luma", "stl", "obj", "fbx", "gltf"],
-    "code": ["code", "repo", "git", "commit", "deploy", "build", "function", "class", "file", "module", "import", "fix", "bug", "patch"],
-    "ai": ["ai", "model", "llm", "voice", "agent", "prompt", "completion", "token"],
-    "media": ["voice", "music", "audio", "image", "video", "render", "clone", "tts"],
-    "video": ["video", "render", "clip", "mp4", "scene", "avatar", "frame"]
+    "3d": [
+      "3d",
+      "mesh",
+      "model",
+      "geometry",
+      "tripo",
+      "meshy",
+      "luma",
+      "stl",
+      "obj",
+      "fbx",
+      "gltf"
+    ],
+    "code": [
+      "code",
+      "repo",
+      "git",
+      "commit",
+      "deploy",
+      "build",
+      "function",
+      "class",
+      "file",
+      "module",
+      "import",
+      "fix",
+      "bug",
+      "patch"
+    ],
+    "ai": [
+      "ai",
+      "model",
+      "llm",
+      "voice",
+      "agent",
+      "prompt",
+      "completion",
+      "token"
+    ],
+    "media": [
+      "voice",
+      "music",
+      "audio",
+      "image",
+      "video",
+      "render",
+      "clone",
+      "tts"
+    ],
+    "video": [
+      "video",
+      "render",
+      "clip",
+      "mp4",
+      "scene",
+      "avatar",
+      "frame"
+    ]
   }
 }
