@@ -21,7 +21,7 @@
  * 4. Uncertainty surfaced, not hidden. Context-scoped entries carry
  * `uncertaintyFlag: true` even on hit.
  *
- * 5. Externalized dictionary at `brian-term-dictionary.json` — data, not
+ * 5. Externalized dictionary at `default-dictionary.json` — data, not
  * code. Override at runtime via `reloadDictionary(absPath)`.
  */
 
@@ -153,7 +153,7 @@ function _extractFileRefs(cleanedText) {
 // reloadDictionary() (used in tests + when Brian edits the JSON).
 // ────────────────────────────────────────────────────────────────────────
 let _dictionaryCache = null;
-let _dictionaryPath = path.join(__dirname, "brian-term-dictionary.json");
+let _dictionaryPath = path.join(__dirname, "default-dictionary.json");
 
 export function reloadDictionary(altPath) {
  if (altPath) _dictionaryPath = altPath;

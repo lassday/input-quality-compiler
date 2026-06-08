@@ -6,11 +6,11 @@
   "main": "./src/index.mjs",
   "exports": {
     ".": "./src/index.mjs",
-    "./dictionary": "./src/brian-term-dictionary.json"
+    "./dictionary": "./src/default-dictionary.json"
   },
   "files": [
     "src/index.mjs",
-    "src/brian-term-dictionary.json",
+    "src/default-dictionary.json",
     "README.md",
     "LICENSE"
   ],
