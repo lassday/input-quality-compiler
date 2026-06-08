@@ -116,13 +116,24 @@ function _extractFileRefs(cleanedText) {
  out.push(p);
  };
 
- // 1. Explicit path mentions
+ // 1. Explicit path mentions — ALWAYS fire (operator intent is unambiguous)
  let m;
  _EXPLICIT_PATH_RX.lastIndex = 0;
  while ((m = _EXPLICIT_PATH_RX.exec(cleanedText)) !== null) {
  push(m[1]);
  if (out.length >= MAX_FILE_REFS) return out;
  }
+
+ // Code-intent gate. Steps 2 + 3 (alias + kebab) only fire when the brief
+ // signals it's asking about code (action verb OR debug question). Strategic
+ // / conversational briefs that incidentally mention an alias word ("the
+ // Input Quality Compiler is our top-of-funnel asset") would otherwise
+ // false-positive-pre-fetch the underlying file and hijack downstream voice
+ // attention. Explicit path mentions (step 1 above) bypass this gate.
+ const _ACTION_VERB_RX = /\b(fix|debug|review|audit|check|build|implement|patch|refactor|update|add|remove|delete|wire|hook|trace|test|find|broken|stub|missing|gap|stale|outdated|crash|throw|hang|wedge|stall|leak|race)\b/i;
+ const _DEBUG_QUESTION_RX = /\b(why|how|where|what|which)\b[^.!?]{0,80}\b(fail|error|break|crash|wrong|broken|missing|stub|gap|return|throw|stop|hang|wedge|stall|misbehav)/i;
+ const _hasCodeIntent = _ACTION_VERB_RX.test(cleanedText) || _DEBUG_QUESTION_RX.test(cleanedText);
+ if (!_hasCodeIntent) return out;
 
  // 2. Concept alias map — longest phrases first so "provenance gate" wins
  // over generic "gate". Word-boundary match, case-insensitive.
