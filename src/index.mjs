@@ -797,8 +797,10 @@ function _extractModelRefs(rawInput) {
     // dot/dash-separated version digits (e.g. 4-6, 4.5, 4-6-20251001).
     /\bclaude[-\s]?(?:opus|sonnet|haiku)[-\s]?\d(?:[.-]\d+)*\b/gi,
     /\bgpt[-\s]?(?:5(?:\.\d)?|4(?:\.\d|o)?|3\.5)\b/gi,
-    // Gemini: now requires a version OR explicit tier (pro/flash/ultra)
-    /\bgemini[-\s]?(?:\d\.\d(?:[-\s]?(?:pro|flash|ultra))?|(?:pro|flash|ultra))\b/gi,
+    // Gemini: requires a version — tier-only mentions ("gemini pro") belong
+    // in providerRefs, not modelRefs (tier router needs precision). Flexible
+    // body matches both dash and dot forms (gemini-2-5-pro, gemini-2.5-pro).
+    /\bgemini[-\s]?\d(?:[.-]\d+)*(?:[-\s]?(?:pro|flash|ultra))?\b/gi,
     // Grok: now requires the version number
     /\bgrok[-\s]?\d(?:[-\s]?(?:reasoning|fast))?\b/gi,
     // ElevenLabs: requires a known model identifier (multilingual / turbo /
