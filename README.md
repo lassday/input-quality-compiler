@@ -6,23 +6,23 @@ Deterministic. Zero external dependencies. Sub-millisecond p95. Pure JavaScript.
 
 `compileInputQuality(args)` reads a raw input string (typos, shorthand, emotional wording, dictation artifacts) and returns a 30-field structured result your agent stack can reason against without burning a clarification cycle.
 
-This is the open-source SDK extraction of the Input Quality Compiler that powers Trelmir OS's multi-agent consensus loop. The full Trelmir OS version adds a Mongo-backed learning loop; this SDK ships the deterministic core. Same input → same output, every time.
+Same input → same output, every time.
 
 ---
 
 ## Why does this exist?
 
-Multi-agent systems are only as good as their inputs. When operators type briefs in real prose — `"fyi the clude voice keeps fucking up after commas in EBL-188 W2"` — the downstream stack faces:
+Multi-agent systems are only as good as their inputs. When operators type briefs in real prose — `"fix the auth bug in TICKET-142, don't change the session schema, so we can ship Friday"` — the downstream stack faces:
 
-- **Typos / phonetic drift** (`clude` → `Claude`)
-- **Shorthand and Brian-terms** (`EBL-188 W2`, `fyi`, project-specific jargon)
+- **Typos / phonetic drift** (e.g. `clude` → `Claude`)
+- **Shorthand and team-specific jargon** (ticket IDs, internal codenames, abbreviations)
 - **Emotional/urgency signals** that change priority (`!!`, profanity, "right now")
 - **Implicit non-goals** (`don't change X`, `don't water down Y`)
 - **Acceptance criteria buried in prose** (`so that X works`, `until Y is green`)
 
 The Input Quality Compiler normalizes all of that into a structured contract BEFORE your agents see it. Agents stop wasting cycles on clarification because the operator's intent is already extracted and explicit.
 
-> **In Trelmir OS, this is the difference between a verdict that pattern-matches the operator's words to real files in the repo, versus a verdict that returns "please clarify."**
+> **The difference between a verdict that pattern-matches the operator's words to real files in the repo, versus a verdict that returns "please clarify."**
 
 ---
 
@@ -42,16 +42,15 @@ Requires Node.js 18+.
 import { compileInputQuality } from "@trelmir-os/input-quality-compiler";
 
 const result = compileInputQuality({
-  rawInput: "fix the consensus-loop in EBL-188 W2 for Klariven, don't water down the spec, so we ship today",
-  operatorId: "brian@trelmir.com",
+  rawInput: "fix the auth bug in TICKET-142, don't change the session schema, so we can ship Friday",
+  operatorId: "user@example.com",
   sessionId: "session-2026-06-08-123",
 });
 
 console.log(result.qualityInScore);    // 73
-console.log(result.userObjective);     // "fix the consensus-loop in EBL-188 W2 for Klariven"
-console.log(result.workflowRefs);      // ["EBL-188 W2", "W2", "consensus_loop"]
-console.log(result.productRefs);       // ["Klariven"]
-console.log(result.nonGoals);          // ["water down the spec"]
+console.log(result.userObjective);     // "fix the auth bug in TICKET-142"
+console.log(result.workflowRefs);      // ["TICKET-142"]
+console.log(result.nonGoals);          // ["change the session schema"]
 console.log(result.emotionalSignal);   // { tone: "urgent", intensity: 0.4, ... }
 console.log(result.outputType);        // "patch"
 console.log(result.urgency);           // "high"
@@ -91,11 +90,11 @@ console.log(result.processingMs);      // ~3
 | `doNotLose` | object[] | Phrases marked as load-bearing ("don't take things away") |
 | `nonGoals` | string[] | Anti-scope from don't / no / without / skip |
 | `entities` | string[] | Canonical entities recognized in input |
-| `productRefs` | string[] | Trelmir / Klariven / Shipwarden / etc. |
-| `providerRefs` | string[] | Claude / OpenAI / Gemini / xAI / ElevenLabs / etc. |
-| `modelRefs` | string[] | `claude-sonnet-4-6`, `gpt-5`, etc. — explicit model IDs only |
+| `productRefs` | string[] | Product names recognized in input |
+| `providerRefs` | string[] | AI provider names (Claude / OpenAI / Gemini / etc.) |
+| `modelRefs` | string[] | Explicit model IDs (e.g. `claude-sonnet-4-6`, `gpt-5`) |
 | `repoRefs` | string[] | Repository names extracted from input |
-| `workflowRefs` | string[] | EBL-XXX ticket IDs, slice names, named workflows |
+| `workflowRefs` | string[] | Ticket IDs, slice names, named workflows |
 | `fileRefs` | string[] | File paths the operator referenced |
 | `implicitRequirements` | string[] | Inferred from product context |
 | `emotionalSignal` | object \| null | `{tone, intensity, profanity, frustration, urgent, excitement}` |
@@ -124,7 +123,7 @@ Standalone path/intent scanner. Same logic the IQC uses internally for `fileRefs
 
 ### `reloadDictionary(altPath)` → `boolean`
 
-Replace the default Brian-term dictionary at runtime with your own. Pass an absolute file path to a JSON dictionary file matching the bundled schema. Returns `true` on success.
+Replace the default dictionary at runtime with your own. Pass an absolute file path to a JSON dictionary file matching the bundled schema. Returns `true` on success.
 
 The default dictionary is exposed as a static file at `@trelmir-os/input-quality-compiler/dictionary` — use it as a starting point for customization.
 
@@ -168,7 +167,7 @@ The result's `recommendedNextCompilerStep` field maps qualityInScore to one of t
 | Metric | Value |
 |---|---|
 | p95 cold | 0.077ms |
-| p95 warm (Brian-sized briefs) | 1–5ms |
+| p95 warm (typical operator briefs) | 1–5ms |
 | Budget hard cap | 500ms (sync, no LLM calls) |
 | External dependencies | 0 |
 | Bundle size | ~50KB minified |
@@ -181,7 +180,7 @@ No external network calls. No telemetry. Runs anywhere Node.js 18+ runs.
 
 ## Customizing the dictionary
 
-The default dictionary maps common operator misspellings, shorthand, and product-specific jargon to canonical forms. To add your own terms:
+The default dictionary maps common operator misspellings, shorthand, and team-specific jargon to canonical forms. To add your own terms:
 
 ```js
 import { reloadDictionary } from "@trelmir-os/input-quality-compiler";
@@ -207,7 +206,7 @@ Dictionary schema:
 }
 ```
 
-`contextScope` is an optional gate — only fires when context tokens co-occur (e.g., `'3d'` would only resolve `tripa` → `Tripo3D` when 3D-context words are present). Set to `null` for unconditional matching.
+`contextScope` is an optional gate — only fires when context tokens co-occur. Set to `null` for unconditional matching.
 
 The bundled dictionary is at `@trelmir-os/input-quality-compiler/dictionary` (JSON file).
 
@@ -224,14 +223,6 @@ The bundled dictionary is at `@trelmir-os/input-quality-compiler/dictionary` (JS
 
 ## License
 
-MIT © Brian Jones / Trelmir Inc.
+MIT © Brian Jones
 
 See [LICENSE](./LICENSE).
-
----
-
-## What is Trelmir OS?
-
-Trelmir OS is a multi-agent operating system for founders. The Input Quality Compiler is one of its core compilers — `Raw Input → IQC → Task Spec → Context → Role Packet → Consensus`. The other compilers ship inside Trelmir OS proper. This package is the IQC extracted for general use.
-
-If you find this useful, the rest of the stack is worth a look.

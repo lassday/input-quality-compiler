@@ -24,10 +24,9 @@
     "llm-pre-processor",
     "agent-input",
     "prompt-engineering",
-    "deterministic",
-    "trelmir"
+    "deterministic"
   ],
-  "author": "Brian Jones / Trelmir Inc.",
+  "author": "Brian Jones",
   "license": "MIT",
   "repository": {
     "type": "git",
