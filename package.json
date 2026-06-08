@@ -1,0 +1,46 @@
+{
+  "name": "@trelmir-os/input-quality-compiler",
+  "version": "0.1.0",
+  "description": "Turn rough operator input (typos, shorthand, emotional wording, jargon) into clean, structured, executable intent — before any agent sees it. Deterministic, zero-dependency, sub-millisecond compile.",
+  "type": "module",
+  "main": "./src/index.mjs",
+  "exports": {
+    ".": "./src/index.mjs",
+    "./dictionary": "./src/brian-term-dictionary.json"
+  },
+  "files": [
+    "src/index.mjs",
+    "src/brian-term-dictionary.json",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "test": "node --test __tests__/smoke.test.mjs"
+  },
+  "keywords": [
+    "input-normalization",
+    "intent-compiler",
+    "task-spec",
+    "llm-pre-processor",
+    "agent-input",
+    "prompt-engineering",
+    "deterministic",
+    "trelmir"
+  ],
+  "author": "Brian Jones / Trelmir Inc.",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/lassday/input-quality-compiler.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lassday/input-quality-compiler/issues"
+  },
+  "homepage": "https://github.com/lassday/input-quality-compiler#readme",
+  "engines": {
+    "node": ">=18"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
