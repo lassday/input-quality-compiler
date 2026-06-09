@@ -1,0 +1,61 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 840 360" width="840" height="360" font-family="'SF Mono','JetBrains Mono','Fira Code',ui-monospace,Menlo,Consolas,monospace" role="img" aria-label="input-quality-compiler terminal demo: blocks a vague prompt before any LLM call, then compiles a real brief into a structured contract in milliseconds">
+  <rect x="0.5" y="0.5" width="839" height="359" rx="14" fill="#0B0C10" stroke="#1F2430"/>
+
+  <!-- window chrome -->
+  <circle cx="30" cy="28" r="6" fill="#E0625E"/>
+  <circle cx="52" cy="28" r="6" fill="#D6A95B"/>
+  <circle cx="74" cy="28" r="6" fill="#5FB37A"/>
+  <text x="104" y="33" fill="#D6A95B" font-size="14.5" font-weight="700">input-quality-compiler</text>
+  <text x="322" y="33" fill="#5FB37A" font-size="13">● live</text>
+  <text x="804" y="33" fill="#6B7280" font-size="12.5" text-anchor="end">0 deps · ~4ms · MIT</text>
+  <line x1="0" y1="52" x2="840" y2="52" stroke="#1F2430"/>
+
+  <!-- ============ SCENE 1 — vague prompt, blocked ============ -->
+  <g>
+    <text x="30" y="94" fill="#4A515E" font-size="10.5" letter-spacing="1.4">VAGUE PROMPT — CAUGHT BEFORE YOUR LLM EVER SEES IT
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.03;0.05;0.444;0.478;1"/>
+    </text>
+    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"asdf"</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.058;0.078;0.444;0.478;1"/>
+    </text>
+    <text x="30" y="162" font-size="14.5"><tspan fill="#E0625E" font-weight="700">✗ BLOCKED</tspan><tspan fill="#4A515E">   ·   quality 37/100   ·   1ms   ·   no API call made</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.147;0.167;0.444;0.478;1"/>
+    </text>
+    <text x="30" y="196" font-size="14" fill="#C7CEDB"><tspan fill="#D6A95B">→ </tspan>What do you want to do? Try a verb like build / fix / show + the thing.
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.224;0.244;0.444;0.478;1"/>
+    </text>
+  </g>
+
+  <!-- ============ SCENE 2 — real brief, structured contract ============ -->
+  <g>
+    <text x="30" y="94" fill="#4A515E" font-size="10.5" letter-spacing="1.4">REAL BRIEF — MESSY PROSE COMPILED INTO A STRUCTURED CONTRACT
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.491;0.511;0.955;0.989;1"/>
+    </text>
+    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"Add pagination to the users list, 25 per page,</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.519;0.539;0.955;0.989;1"/>
+    </text>
+    <text x="55" y="150" font-size="14.5" fill="#8A93A3">keep the existing response shape"
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.547;0.567;0.955;0.989;1"/>
+    </text>
+    <text x="30" y="190" font-size="14.5"><tspan fill="#5FB37A" font-weight="700">✓ PASSED</tspan><tspan fill="#4A515E">   ·   quality 59/100   ·   build   ·   4ms   ·   zero network calls</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.613;0.633;0.955;0.989;1"/>
+    </text>
+    <text x="42" y="222" font-size="14"><tspan fill="#6B7280">objective    </tspan><tspan fill="#C7CEDB">Add pagination to the users list, 25 per page…</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.658;0.678;0.955;0.989;1"/>
+    </text>
+    <text x="42" y="248" font-size="14"><tspan fill="#6B7280">outputType   </tspan><tspan fill="#D6A95B">build</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.691;0.711;0.955;0.989;1"/>
+    </text>
+    <text x="42" y="274" font-size="14"><tspan fill="#6B7280">urgency      </tspan><tspan fill="#80C4E0">normal</tspan>
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.724;0.744;0.955;0.989;1"/>
+    </text>
+    <text x="30" y="312" font-size="14" fill="#C7CEDB"><tspan fill="#5FB37A">→ </tspan>safe to dispatch — scoped, typed, deterministic contract sent to your LLM
+      <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.769;0.789;0.955;0.989;1"/>
+    </text>
+  </g>
+
+  <!-- prompt caret: blinks only while the vague prompt is being entered, then leaves -->
+  <rect x="146" y="114" width="9" height="17" fill="#D6A95B">
+    <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="discrete" values="1;0;1;0;1;0;0" keyTimes="0;0.05;0.1;0.15;0.2;0.25;1"/>
+  </rect>
+</svg>

@@ -1,13 +1,37 @@
-# @trelmir-os/input-quality-compiler
+<h1 align="center">Stop paying your LLM to read garbage prompts.</h1>
 
-[![npm version](https://img.shields.io/npm/v/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10)](https://www.npmjs.com/package/@trelmir-os/input-quality-compiler)
-[![npm downloads](https://img.shields.io/npm/dm/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10)](https://www.npmjs.com/package/@trelmir-os/input-quality-compiler)
-[![bundle size](https://img.shields.io/bundlephobia/minzip/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10)](https://bundlephobia.com/package/@trelmir-os/input-quality-compiler)
-[![license MIT](https://img.shields.io/npm/l/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10)](./LICENSE)
+<p align="center">
+  <strong>A 1-millisecond gate that scores, structures, and blocks vague prompts <em>before</em> they ever hit OpenAI, Claude, or Gemini — and before they ever hit your bill.</strong>
+</p>
 
-> **Drop in front of any OpenAI / Claude / Gemini call as a token cost-guard. Block vague prompts before you pay for them.**
+<p align="center">
+  <code>@trelmir-os/input-quality-compiler</code> · deterministic · zero dependencies · sub-millisecond · MIT
+</p>
 
-Deterministic. Zero external dependencies. Sub-millisecond p95. Pure JavaScript.
+<p align="center">
+  <a href="https://www.npmjs.com/package/@trelmir-os/input-quality-compiler"><img src="https://img.shields.io/npm/v/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10" alt="npm version" /></a>
+  <a href="https://www.npmjs.com/package/@trelmir-os/input-quality-compiler"><img src="https://img.shields.io/npm/dm/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10" alt="npm downloads" /></a>
+  <a href="https://bundlephobia.com/package/@trelmir-os/input-quality-compiler"><img src="https://img.shields.io/bundlephobia/minzip/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10" alt="bundle size" /></a>
+  <a href="./LICENSE"><img src="https://img.shields.io/npm/l/@trelmir-os/input-quality-compiler.svg?style=flat-square&color=D6A95B&labelColor=0B0C10" alt="license MIT" /></a>
+</p>
+
+<p align="center">
+  <img src="assets/demo.svg" alt="input-quality-compiler in a terminal: a vague prompt is blocked before any LLM call, then a real brief is compiled into a structured contract in milliseconds" width="820" />
+</p>
+
+## ⚡ Try it right now — no install, no signup, no API key
+
+```bash
+npx @trelmir-os/input-quality-compiler "change the color of the button maybe? or not"
+```
+
+It gates that vague prompt in a few milliseconds — before you'd have paid a single token. Feed it a real brief and it hands back a structured, dispatch-ready contract instead:
+
+```bash
+npx @trelmir-os/input-quality-compiler "Add pagination to the users list, 25 per page, keep the existing response shape"
+```
+
+Here's the same gate in two lines, dropped in front of any LLM call:
 
 ```js
 import { compileInputQuality } from "@trelmir-os/input-quality-compiler";

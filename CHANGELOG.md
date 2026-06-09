@@ -9,6 +9,14 @@ Format: [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) · Versioning: 
 
 
 
+
+## [0.2.0] — 2026-06-09
+
+_MINOR bump from iqc-v0.1.6_
+
+### Features
+- activate full capability surface + sticky upgrade ladder (6ef110efc310)
+
 ## [0.1.6] — 2026-06-09
 
 _PATCH bump (initial automated release)_

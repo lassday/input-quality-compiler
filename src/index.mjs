@@ -31,7 +31,7 @@ const __dirname = path.dirname(__filename);
 // publish. Consumers can `import { VERSION } from "@trelmir-os/input-quality-compiler"`
 // for runtime introspection (compatibility shims, telemetry tagging, etc.).
 // DO NOT edit by hand — bump-version writes this line.
-export const VERSION = "0.1.6";
+export const VERSION = "0.2.0";
 
 export const SLICE_ID = "TREL-OS-EBL-191-W1.1-INPUT-QUALITY-COMPILER-1";
 export const BUDGET_MS = 500;
