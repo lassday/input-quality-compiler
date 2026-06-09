@@ -50,9 +50,9 @@ test("2. main compile returns spec-required top-level fields", () => {
   }
 });
 
-test("3. spec-closeout extractors fire on a typical operator brief", () => {
+test("3. all 11 spec-closeout extractors fire on a Brian-style brief", () => {
   const r = compileInputQuality({
-    rawInput: "fix the auth bug in TICKET-142, don't change the session schema, so that we can ship today when the migration completes cleanly",
+    rawInput: "fix the consensus-loop wall in EBL-188 W2 for Klariven, don't water down the spec, so that we can ship today when the pack lanes synthesize cleanly",
   });
   assert.ok(r.userObjective, "userObjective should fire");
   assert.ok(r.requiredOutcome, "requiredOutcome should fire");
@@ -61,8 +61,9 @@ test("3. spec-closeout extractors fire on a typical operator brief", () => {
   assert.ok(r.emotionalSignal !== null, "emotionalSignal should fire");
   assert.equal(r.outputType !== null && typeof r.outputType === "string", true, "outputType should fire");
   assert.equal(r.urgency !== null && typeof r.urgency === "string", true, "urgency should fire");
-  assert.ok(Array.isArray(r.productRefs), "productRefs is an array (empty OK by default — depends on dictionary)");
-  assert.ok(Array.isArray(r.implicitRequirements), "implicitRequirements is an array");
+  assert.ok(r.workflowRefs.length > 0, "workflowRefs should detect EBL-188 W2");
+  assert.ok(r.productRefs.includes("Klariven"), "productRefs should detect Klariven");
+  assert.ok(r.implicitRequirements.length > 0, "implicitRequirements should fire from Klariven context");
 });
 
 test("4. bundled default dictionary loads", () => {

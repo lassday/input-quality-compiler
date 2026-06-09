@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+# Pre-commit hook for @trelmir-os/input-quality-compiler.
+#
+# Install:
+#   ln -sf ../../packages/input-quality-compiler/scripts/git-hooks/pre-commit .git/hooks/pre-commit
+#   chmod +x packages/input-quality-compiler/scripts/git-hooks/pre-commit
+#
+# Bypass (emergency only):
+#   SKIP_IQC_PRECOMMIT=1 git commit ...
+#
+# What it does:
+#   1. Detects whether the staged change touches packages/input-quality-compiler/
+#   2. If yes: runs `npm test` (must pass)
+#   3. Reads the prepared commit message + validates conventional-commits shape
+#   4. Bails on any failure (exit 1) — commit aborts cleanly
+
+set -euo pipefail
+
+if [ "${SKIP_IQC_PRECOMMIT:-0}" = "1" ]; then
+  echo "[iqc-precommit] bypassed via SKIP_IQC_PRECOMMIT=1"
+  exit 0
+fi
+
+REPO_ROOT="$(git rev-parse --show-toplevel)"
+PKG_DIR="$REPO_ROOT/packages/input-quality-compiler"
+PKG_REL="packages/input-quality-compiler"
+
+# 1. Touched the IQC package?
+TOUCHED=$(git diff --cached --name-only | grep -E "^${PKG_REL}/" || true)
+if [ -z "$TOUCHED" ]; then
+  exit 0   # nothing to validate
+fi
+
+echo "[iqc-precommit] staged changes in $PKG_REL — validating …"
+
+# 2. Tests
+echo "[iqc-precommit] npm test"
+( cd "$PKG_DIR" && npm test --silent ) || {
+  echo "[iqc-precommit] ✗ tests failed — fix before commit (or SKIP_IQC_PRECOMMIT=1 to override)"
+  exit 1
+}
+
+# 3. Conventional commit message validation
+#    Hooks fire before the commit message is finalized for plain `git commit -m`,
+#    but the prepare-commit-msg path gives us a temp file. We support both:
+#    - read .git/COMMIT_EDITMSG if it exists (typical interactive commit)
+#    - skip if not present (msg coming from -m flag is checked by commit-msg hook
+#      instead — this hook focuses on tests)
+COMMIT_MSG_FILE="$REPO_ROOT/.git/COMMIT_EDITMSG"
+if [ -f "$COMMIT_MSG_FILE" ]; then
+  MSG=$(head -1 "$COMMIT_MSG_FILE" | sed 's/^#.*//' | xargs || true)
+  if [ -n "$MSG" ]; then
+    if ! echo "$MSG" | grep -qE '^(feat|fix|chore|docs|refactor|test|perf|ci|build|style)(\([a-z0-9_-]+\))?!?:[[:space:]].+'; then
+      echo "[iqc-precommit] ⚠ commit message does not match conventional commits:"
+      echo "[iqc-precommit]   $MSG"
+      echo "[iqc-precommit]   expected: <type>(scope): description"
+      echo "[iqc-precommit]   types: feat | fix | chore | docs | refactor | test | perf | ci | build | style"
+      echo "[iqc-precommit]   PR-validate will reject this — fixing now saves a roundtrip"
+      # Don't hard-block here — commit-msg hook handles it. Just warn.
+    fi
+  fi
+fi
+
+echo "[iqc-precommit] ✓ ok"

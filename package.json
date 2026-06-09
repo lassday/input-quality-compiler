@@ -1,21 +1,32 @@
 {
   "name": "@trelmir-os/input-quality-compiler",
-  "version": "0.1.0",
-  "description": "Turn rough operator input (typos, shorthand, emotional wording, jargon) into clean, structured, executable intent — before any agent sees it. Deterministic, zero-dependency, sub-millisecond compile.",
+  "version": "0.1.6",
+  "description": "Drop in front of any OpenAI / Claude / Gemini call as a token cost-guard. Blocks vague prompts before you pay for them. Deterministic, zero-dependency, sub-millisecond compile.",
   "type": "module",
   "main": "./src/index.mjs",
   "exports": {
     ".": "./src/index.mjs",
-    "./dictionary": "./src/default-dictionary.json"
+    "./dictionary": "./src/brian-term-dictionary.json"
   },
   "files": [
     "src/index.mjs",
-    "src/default-dictionary.json",
+    "src/brian-term-dictionary.json",
+    "scripts/postinstall.mjs",
     "README.md",
+    "CHANGELOG.md",
     "LICENSE"
   ],
   "scripts": {
-    "test": "node --test __tests__/smoke.test.mjs"
+    "test": "node --test __tests__/smoke.test.mjs",
+    "test:full": "node --test __tests__/smoke.test.mjs __tests__/parity.test.mjs test/parity.test.mjs",
+    "postinstall": "node scripts/postinstall.mjs || true",
+    "release": "node scripts/release.mjs",
+    "release:dry": "node scripts/release.mjs --dry-run",
+    "smoke:published": "node scripts/post-publish-smoke.mjs latest",
+    "bump:auto": "node scripts/bump-version.mjs",
+    "changelog": "node scripts/generate-changelog.mjs",
+    "sync-stamps": "node scripts/sync-version-stamps.mjs",
+    "status": "node scripts/status.mjs"
   },
   "keywords": [
     "input-normalization",
@@ -24,9 +35,10 @@
     "llm-pre-processor",
     "agent-input",
     "prompt-engineering",
-    "deterministic"
+    "deterministic",
+    "trelmir"
   ],
-  "author": "Brian Jones",
+  "author": "Brian Jones / Trelmir Inc.",
   "license": "MIT",
   "repository": {
     "type": "git",
@@ -35,9 +47,9 @@
   "bugs": {
     "url": "https://github.com/lassday/input-quality-compiler/issues"
   },
-  "homepage": "https://github.com/lassday/input-quality-compiler#readme",
+  "homepage": "https://trelmir.dev/iqc",
   "engines": {
-    "node": ">=18"
+    "node": ">=22"
   },
   "publishConfig": {
     "access": "public"
