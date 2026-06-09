@@ -16,7 +16,7 @@
 </p>
 
 <p align="center">
-  <img src="assets/demo.svg" alt="input-quality-compiler in a terminal: a vague prompt is blocked before any LLM call, then a real brief is compiled into a structured contract in milliseconds" width="820" />
+  <img src="https://raw.githubusercontent.com/lassday/input-quality-compiler/main/assets/demo.svg" alt="input-quality-compiler in a terminal: a vague prompt is blocked before any LLM call, then a real brief is compiled into a structured contract in milliseconds" width="820" />
 </p>
 
 ## ⚡ Try it right now — no install, no signup, no API key

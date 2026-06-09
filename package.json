@@ -1,6 +1,6 @@
 {
   "name": "@trelmir-os/input-quality-compiler",
-  "version": "0.2.0",
+  "version": "0.3.1",
   "description": "Drop in front of any OpenAI / Claude / Gemini call as a token cost-guard. Blocks vague prompts before you pay for them. Deterministic, zero-dependency, sub-millisecond compile.",
   "type": "module",
   "main": "./src/index.mjs",

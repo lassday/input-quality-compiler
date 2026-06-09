@@ -15,7 +15,7 @@
     <text x="30" y="94" fill="#4A515E" font-size="10.5" letter-spacing="1.4">VAGUE PROMPT — CAUGHT BEFORE YOUR LLM EVER SEES IT
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.03;0.05;0.444;0.478;1"/>
     </text>
-    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"asdf"</tspan>
+    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"wdyt — should we just ship it?"</tspan>
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.058;0.078;0.444;0.478;1"/>
     </text>
     <text x="30" y="162" font-size="14.5"><tspan fill="#E0625E" font-weight="700">✗ BLOCKED</tspan><tspan fill="#4A515E">   ·   quality 37/100   ·   1ms   ·   no API call made</tspan>
@@ -31,16 +31,16 @@
     <text x="30" y="94" fill="#4A515E" font-size="10.5" letter-spacing="1.4">REAL BRIEF — MESSY PROSE COMPILED INTO A STRUCTURED CONTRACT
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.491;0.511;0.955;0.989;1"/>
     </text>
-    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"Add pagination to the users list, 25 per page,</tspan>
+    <text x="30" y="126" font-size="14.5"><tspan fill="#D6A95B">$ </tspan><tspan fill="#C7CEDB">iqc </tspan><tspan fill="#8A93A3">"Refactor packages/api/users.ts: add cursor pagination</tspan>
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.519;0.539;0.955;0.989;1"/>
     </text>
-    <text x="55" y="150" font-size="14.5" fill="#8A93A3">keep the existing response shape"
+    <text x="55" y="150" font-size="14.5" fill="#8A93A3">(?cursor=, ?limit=25), keep response shape, 3 tests, staging only"
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.547;0.567;0.955;0.989;1"/>
     </text>
-    <text x="30" y="190" font-size="14.5"><tspan fill="#5FB37A" font-weight="700">✓ PASSED</tspan><tspan fill="#4A515E">   ·   quality 59/100   ·   build   ·   4ms   ·   zero network calls</tspan>
+    <text x="30" y="190" font-size="14.5"><tspan fill="#5FB37A" font-weight="700">✓ PASSED</tspan><tspan fill="#4A515E">   ·   quality 74/100   ·   build   ·   4ms   ·   zero network calls</tspan>
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.613;0.633;0.955;0.989;1"/>
     </text>
-    <text x="42" y="222" font-size="14"><tspan fill="#6B7280">objective    </tspan><tspan fill="#C7CEDB">Add pagination to the users list, 25 per page…</tspan>
+    <text x="42" y="222" font-size="14"><tspan fill="#6B7280">objective    </tspan><tspan fill="#C7CEDB">Refactor packages/api/users.ts: add cursor pagination…</tspan>
       <animate attributeName="opacity" dur="9s" repeatCount="indefinite" calcMode="linear" values="0;0;1;1;0;0" keyTimes="0;0.658;0.678;0.955;0.989;1"/>
     </text>
     <text x="42" y="248" font-size="14"><tspan fill="#6B7280">outputType   </tspan><tspan fill="#D6A95B">build</tspan>
